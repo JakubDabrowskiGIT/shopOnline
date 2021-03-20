@@ -5,9 +5,13 @@ import axios from "axios";
 
 const Item = () => {
 
+  const [items, setItems] = useState([]);
+
   const fetchItems = () => {
     axios.get("http://localhost:8080/backend").then(res => {
       console.log(res);
+      const data = res.data;
+      setItems(res.data);
     });
   }
 
@@ -15,7 +19,14 @@ const Item = () => {
     fetchItems();
   }, []);
 
-  return "Hello"
+  return items.map((items, index) => {
+    return (
+        <div key={index}>
+          <h1>{items.name}</h1>
+          <p>{items.price}</p>
+        </div>
+    )
+  });
 }
 
 function App() {
