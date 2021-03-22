@@ -1,7 +1,8 @@
 package com.shop.online.controller;
 
-import com.shop.online.model.Item;
-import com.shop.online.model.ItemService;
+import com.shop.online.image.ImageService;
+import com.shop.online.item.Item;
+import com.shop.online.item.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +25,7 @@ import java.util.UUID;
 public class ShopController {
 
     private final ItemService itemService;
+    private final ImageService imageService;
 
     @GetMapping
     public Set<Item> getAll() {
@@ -36,6 +38,8 @@ public class ShopController {
 
     @PostMapping(path = "{id}/image/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void uploadUserProfileImage(@PathVariable("id") String id, @RequestParam("file") MultipartFile file) {
+        Item currItem = itemService.getById(UUID.fromString(id));
+        imageService.saveImageItem(currItem, file);
         System.out.println(id + " file: " + file);
     }
 }

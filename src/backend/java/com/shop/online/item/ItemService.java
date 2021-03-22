@@ -1,4 +1,4 @@
-package com.shop.online.model;
+package com.shop.online.item;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -21,11 +22,11 @@ public class ItemService {
         itemRepository.delete(item);
     }
 
-    public void deleteById(Integer id) {
+    public void deleteById(UUID id) {
         itemRepository.deleteById(id);
     }
 
-    public Item getById(int id){
+    public Item getById(UUID id) {
         return itemRepository.getOne(id);
     }
 
@@ -36,5 +37,4 @@ public class ItemService {
     public void save(List<Item> itemList) {
         itemRepository.saveAll(itemList);
     }
-
 }
