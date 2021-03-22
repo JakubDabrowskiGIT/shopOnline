@@ -3,9 +3,9 @@ package com.shop.online.model;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -30,7 +30,7 @@ public class ItemService {
     }
 
     public Set<Item> getAll() {
-        return itemRepository.findAll().stream().collect(Collectors.toSet());
+        return new HashSet<>(itemRepository.findAll());
     }
 
     public void save(List<Item> itemList) {
