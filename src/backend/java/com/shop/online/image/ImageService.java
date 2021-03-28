@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 import static org.springframework.util.MimeTypeUtils.IMAGE_GIF_VALUE;
@@ -31,8 +31,12 @@ public class ImageService {
         imageRepository.deleteById(id);
     }
 
-    public Set<Image> getAll() {
-        return new HashSet<>(imageRepository.findAll());
+    public List<Image> getAll() {
+        return new ArrayList<>(imageRepository.findAll());
+    }
+
+    public List<Image> getImageByItemId(Item item) {
+        return imageRepository.findByItemId(item);
     }
 
     public void saveImageItem(Item item, MultipartFile file) {
@@ -46,7 +50,7 @@ public class ImageService {
 
         try {
             Image image = new Image();
-            image.setImagesItemID(item);
+            image.setItemId(item);
             image.setData(file.getBytes());
             image.setTitle(filename);
             imageRepository.save(image);

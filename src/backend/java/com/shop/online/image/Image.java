@@ -1,5 +1,6 @@
 package com.shop.online.image;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shop.online.item.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,7 +34,7 @@ public class Image {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @NonNull
-    public Item imagesItemID;
+    public Item itemId;
 
     @NonNull
     private String title;

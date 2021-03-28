@@ -1,5 +1,6 @@
 package com.shop.online.item;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shop.online.image.Image;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,10 +45,9 @@ public class Item {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime updateDate = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "imagesItemID", orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "itemId", orphanRemoval = true, fetch = FetchType.EAGER)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Image> images;
-
-    //1:30
 }

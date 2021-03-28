@@ -3,9 +3,7 @@ package com.shop.online.item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -30,8 +28,8 @@ public class ItemService {
         return itemRepository.getOne(id);
     }
 
-    public Set<Item> getAll() {
-        return new HashSet<>(itemRepository.findAll());
+    public List<Item> getAll() {
+        return itemRepository.findAll();
     }
 
     public void save(List<Item> itemList) {

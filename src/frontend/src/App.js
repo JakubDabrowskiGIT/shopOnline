@@ -24,6 +24,7 @@ const Item = () => {
             <div key={index}>
                 <br/>
                 <br/>
+                {items.id ? <img src={`http://localhost:8080/backend/${items.id}/image/download`} /> : null}
                 <h1>{items.name}</h1>
                 <p>{items.description}</p>
                 <p>{items.price}</p>
@@ -32,9 +33,9 @@ const Item = () => {
                 {/*= id = {items.id}*/}
                 <br/>
             </div>
-        )
+        );
     });
-}
+};
 
 function Dropzone({id}) {
     const onDrop = useCallback(acceptedFiles => {
