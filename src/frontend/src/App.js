@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from "react";
-import './App.css';
+import './App.scss';
 import axios from "axios";
 import {useDropzone} from 'react-dropzone'
 
@@ -10,7 +10,6 @@ const Item = () => {
     const fetchItems = () => {
         axios.get("http://localhost:8080/backend").then(res => {
             console.log(res);
-            const data = res.data;
             setItems(res.data);
         });
     }
@@ -24,7 +23,7 @@ const Item = () => {
             <div key={index}>
                 <br/>
                 <br/>
-                {items.id ? <img src={`http://localhost:8080/backend/${items.id}/image/download`} /> : null}
+                {items.id ? <img alt={'No img'} src={`http://localhost:8080/backend/${items.id}/image/download`} /> : null}
                 <h1>{items.name}</h1>
                 <p>{items.description}</p>
                 <p>{items.price}</p>
