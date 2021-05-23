@@ -54,7 +54,7 @@ function Dropzone({id}) {
             console.log(err);
         });
 
-    }, []);
+    }, [id]);
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
     return (
